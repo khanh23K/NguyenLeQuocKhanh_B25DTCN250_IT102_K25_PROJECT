@@ -463,37 +463,53 @@ void deleteEmployee(struct Employee a[], int *n){
 
 
 
-void searchEmployeeByName(struct Employee a[],int n ){
-	if(n == 0){
-		printf("Khong tim thay nhan vien nay!!! ");
-		return;
-	}
-	char name[50];
-	int found=0;
-	
-	printf("Nhap ten nhan vien can tra cuu: ");
-	fgets(name,sizeof(name),stdin);
-	name[strcspn(name,"\n")];
-	
-	if(strlen(name) == 0){
-		printf("Ten nhan vien can tra cuu: ");
-		return;
-	}
-	printf("\nKet qua tra cuu theo ten %s",name);
-	printf("\n+----------+--------------------+----------------+------------------+---------------+\n");
-	printf("|%-10s|%-20s|%-16s|%-18s|%-15s|\n","EmpId","Ten","Chuc vu","Tien luong cua ban","Ngay cong");
-	printf("+----------+--------------------+----------------+------------------+---------------+\n");
-	
-		for(int i=0;i<n;i++){
-			if(strstr (a[i].name, name)!= NULL){
-				printEmployee(&a[i]);
-				found = 1;		
-			}
-		}
-		if(!found){
-			printf("Khong tim thay nhan vien nao co ten chua \"%s\".\n", name);
-		}
+void searchEmployeeByName(struct Employee a[], int n) {
+    if (n == 0) {
+        printf("Danh sach rong! Khong co gi de tim.\n");
+        return;
+    }
+
+    char keyword[50];
+    printf("Nhap ten muon tim: ");
+    fgets(keyword, sizeof(keyword), stdin);
+    keyword[strcspn(keyword, "\n")] = '\0';  
+
+    if (strlen(keyword) == 0) {
+        printf("Khong duoc de rong!\n");
+        return;
+    }
+    char keyLower[50];
+    strcpy(keyLower, keyword);
+    for (int i = 0; keyLower[i]; i++)
+        keyLower[i] = tolower(keyLower[i]);
+
+    int found = 0;
+
+    printf("\nKet qua tra cuu theo ten:\n");
+    printf("+----------+--------------------+----------------+------------------+---------------+\n");
+    printf("|%-10s|%-20s|%-16s|%-18s|%-15s|\n","EmpId","Ten","Chuc vu","Tien luong","Ngay cong");
+    printf("+----------+--------------------+----------------+------------------+---------------+\n");
+
+    for (int i = 0; i < n; i++) {
+
+        char nameLower[50];
+        strcpy(nameLower, a[i].name);
+        for (int j = 0; nameLower[j]; j++)
+            nameLower[j] = tolower(nameLower[j]);
+
+        if (strstr(nameLower, keyLower) != NULL) {
+            printEmployee(&a[i]);
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf(">>> Khong tim thay nhan vien nao phu hop!\n");
+    }
+    fflush (stdin);
+    getchar();
 }
+
 
 
 
