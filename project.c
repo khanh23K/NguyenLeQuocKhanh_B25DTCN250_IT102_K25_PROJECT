@@ -27,7 +27,8 @@ struct timeSheet{
 int empCount =0 ;
 int hasSpace(const char *s) {
     for (int i = 0; s[i] != '\0'; i++) {
-        if (isspace(s[i])) return 1;
+        if (isspace(s[i])) 
+		return 1;
     }
     return 0;
 }
@@ -231,10 +232,7 @@ void addEmployee(struct Employee a[],int *n){
 		printf("Chuc vu ko dc de rong.Vui long nhap lai!!!\n");
 		continue;
 	}
-	if(hasSpace(Employees.position)){
-			printf("Khong duoc de rong.Vui long nhap lai!!!\n");
-			continue;
-		}
+	
 	break;
 }
 
@@ -278,7 +276,8 @@ void updateEmployee(struct Employee a[], int n){
 	printf("Chuc vu            :%s\n",Employees->position);
 	printf("Tien luong cua ban :%.1lf\n",Employees->baseSalary);
 	
-	printf("Nhap chuc vu moi: ");
+	
+	printf("Nhap chuc vu moi:");
 	fgets(buffer,sizeof(buffer),stdin);
 	buffer[strcspn(buffer,"\n")]='\0';
 	
@@ -298,6 +297,9 @@ void updateEmployee(struct Employee a[], int n){
 
 }
 }
+
+
+
 
 
 
@@ -342,6 +344,8 @@ void printAllEmployee(struct Employee a[],int n){
 	getchar ();
 	
 }
+
+
 
 
 
@@ -410,6 +414,8 @@ void pageEmployeeList(struct Employee a[], int n) {
 
 
 
+
+
 void deleteEmployee(struct Employee a[], int *n){
 	if(*n == 0){
 		printf("Chua co ho so nhan vien!!!");
@@ -452,6 +458,7 @@ void deleteEmployee(struct Employee a[], int *n){
     printf(">>> Da xoa nhan vien thanh cong! <<<\n");
 
 }
+
 
 
 
@@ -525,6 +532,8 @@ void sortEmployeesBySalary(struct Employee a[],int n){
     printf("Da sap xep danh sach nhan vien theo luong.\n");
    	printAllEmployee(a,n);
 }
+
+
 
 
 
