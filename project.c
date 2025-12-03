@@ -211,7 +211,7 @@ void addEmployee(struct Employee a[],int *n){
 	printf("Nhap chuc vu cua ban: ");
 	fgets(Employees.position, sizeof(Employees.position),stdin);
 	Employees.position[strcspn(Employees.position,"\n")]='\0';
-	if(strlen(Employees.position)==0){
+	if(strlen(Employees.position == 0)){
 		printf("Chuc vu ko dc de rong.Vui long nhap lai!!!\n");
 		continue;
 	}
@@ -345,7 +345,7 @@ void pageEmployeeList(struct Employee a[], int n) {
         return;
     }
 
-    int page = 1;  
+    int page = 1; 
     int totalPage = (n + PAGE - 1) / PAGE;
     char input[20];
 
